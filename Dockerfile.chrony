@@ -1,0 +1,21 @@
+FROM debian:stable-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    chrony \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create directory for sockets
+RUN mkdir -p /var/run/chrony && \
+    chown -R root:root /var/run/chrony
+
+# Expose NTP port
+EXPOSE 123/udp
+
+# expose the chrony control port
+EXPOSE 323/udp
+
+# Run chronyd in foreground
+# -d: run in foreground (don't daemonize)
+# -u root: run as root (needed to set system time)
+ENTRYPOINT ["chronyd", "-d", "-u", "root"]

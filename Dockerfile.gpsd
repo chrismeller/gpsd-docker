@@ -1,0 +1,22 @@
+FROM debian:stable-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gpsd \
+    gpsd-clients \
+    pps-tools \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create directory for socket
+RUN mkdir -p /var/run/gpsd && \
+    chown -R root:root /var/run/gpsd
+
+# Expose GPSD port
+EXPOSE 2947
+
+# Run GPSD in foreground, listening on all interfaces
+# -N: don't daemonize
+# -n: don't wait for client to connect before polling
+# -G: listen on all addresses (not just localhost)
+ENTRYPOINT ["/bin/sh", "-c", "exec gpsd -N -n -G -D5 /dev/ttyACM0 2>&1"]
+#ENTRYPOINT ["gpsd", "-N", "-n", "-G", "-D", "5", "/dev/ttyACM0"]

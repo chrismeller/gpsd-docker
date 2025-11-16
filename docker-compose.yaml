@@ -1,0 +1,67 @@
+services:
+  gpsd:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpsd
+    container_name: gpsd
+    devices:
+      - /dev/ttyACM0:/dev/ttyACM0
+    ports:
+      - "2947:2947"
+    volumes:
+      - gpsd_socket:/run/:rw
+    environment:
+      - TZ=UTC
+    restart: unless-stopped
+    #ipc: shareable
+    depends_on:
+      chrony:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "gpspipe", "-r", "-n", "1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  chrony:
+    build:
+      context: .
+      dockerfile: Dockerfile.chrony
+    container_name: chrony
+    ports:
+      - "123:123/udp"
+      - "323:323/udp"
+    volumes:
+      - gpsd_socket:/run/:rw
+      - ./chrony.conf:/etc/chrony/chrony.conf:ro
+    environment:
+      - TZ=UTC
+      #ipc: service:gpsd
+    cap_add:
+      - SYS_TIME
+      - SYS_NICE
+    restart: unless-stopped
+    #depends_on:
+    #  gpsd:
+    #    condition: service_healthy
+    healthcheck:
+      test: ["CMD", "chronyc", "tracking"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile.exporter
+    container_name: exporter
+    ports:
+      - "9978:9978/tcp"
+    environment:
+      - TZ=UTC
+    depends_on:
+      gpsd:
+        condition: service_healthy
+
+volumes:
+  gpsd_socket:
