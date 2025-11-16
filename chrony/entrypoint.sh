@@ -77,6 +77,21 @@ start_chronyd() {
     return 0
 }
 
+cleanup() {
+    log "Received shutdown signal, cleaning up..."
+    
+    # Kill chronyd if running
+    if [[ -f /var/run/chronyd.pid ]]; then
+        local chronyd_pid=$(cat /var/run/chronyd.pid)
+        if kill -0 "$chronyd_pid" 2>/dev/null; then
+            log "Stopping chronyd (PID: $chronyd_pid)"
+            kill -TERM "$chronyd_pid"
+            wait "$chronyd_pid" 2>/dev/null || true
+        fi
+        rm -f /var/run/chronyd.pid
+    fi
+}
+
 # Main execution
 main() {
     log "=== GPS/Chrony Startup Script ==="
@@ -99,7 +114,8 @@ main() {
     
     log "All services started successfully"
 
-    wait  #hack to keep containers running, remove after monitor services is fixed
+    local chrony_pid=$(cat /var/run/chronyd.pid)
+    wait $chrony_pid
 }
 
 # Run main function with all arguments
