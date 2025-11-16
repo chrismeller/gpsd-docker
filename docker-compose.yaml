@@ -8,20 +8,17 @@ services:
       - /dev/ttyACM0:/dev/ttyACM0
     ports:
       - "2947:2947"
-    volumes:
-      - gpsd_socket:/run/:rw
     environment:
       - TZ=UTC
+      - GPS_DEVICE=/dev/ttyACM0
+      - PPS_DEVICE=
+      - GPS_SPEED=38400
+      - DEBUG_LEVEL=5
     restart: unless-stopped
     #ipc: shareable
     depends_on:
       chrony:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD", "gpspipe", "-r", "-n", "1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
   chrony:
     build:

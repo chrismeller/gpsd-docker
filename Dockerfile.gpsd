@@ -8,15 +8,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Create directory for socket
-RUN mkdir -p /var/run/gpsd && \
-    chown -R root:root /var/run/gpsd
+# RUN mkdir -p /var/run/gpsd && \
+#     chown -R root:root /var/run/gpsd
 
 # Expose GPSD port
 EXPOSE 2947
+
+HEALTHCHECK --start-period=1s --interval=30s --timeout=10s --retries=3 CMD gpspipe -r -n 1 || exit 1
+
+COPY --chmod=755 ./gpsd/entrypoint.sh /entrypoint.sh
 
 # Run GPSD in foreground, listening on all interfaces
 # -N: don't daemonize
 # -n: don't wait for client to connect before polling
 # -G: listen on all addresses (not just localhost)
-ENTRYPOINT ["/bin/sh", "-c", "exec gpsd -N -n -G -D5 /dev/ttyACM0 2>&1"]
-#ENTRYPOINT ["gpsd", "-N", "-n", "-G", "-D", "5", "/dev/ttyACM0"]
+ENTRYPOINT ["/entrypoint.sh"]
