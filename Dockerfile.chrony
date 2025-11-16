@@ -5,9 +5,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# Create chrony user
+RUN groupadd -r chrony && useradd -r -g chrony chrony
+
 # Create directory for sockets
 RUN mkdir -p /var/run/chrony && \
-    chown -R root:root /var/run/chrony
+    chown -R chrony:chrony /var/run/chrony
+
+# Create directory for chrony data and set ownership
+RUN mkdir -p /var/lib/chrony && \
+    chown -R chrony:chrony /var/lib/chrony
+
+# Set ownership of chrony configuration directory
+RUN mkdir -p /etc/chrony && \
+    chown -R chrony:chrony /etc/chrony
 
 # Expose NTP port
 EXPOSE 123/udp
@@ -15,7 +26,13 @@ EXPOSE 123/udp
 # expose the chrony control port
 EXPOSE 323/udp
 
-# Run chronyd in foreground
-# -d: run in foreground (don't daemonize)
-# -u root: run as root (needed to set system time)
-ENTRYPOINT ["chronyd", "-d", "-u", "root"]
+# Tell Docker how to monitor the status of the container
+HEALTHCHECK --start-period=1s --interval=30s --timeout=10s --retries=3 CMD chronyc -n tracking || exit 1
+
+COPY --chmod=755 ./chrony/entrypoint.sh /entrypoint.sh
+
+# Switch to chrony user
+#USER chrony
+
+# Run the entrypoint script
+ENTRYPOINT ["/entrypoint.sh"]

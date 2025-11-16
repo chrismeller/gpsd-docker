@@ -32,10 +32,11 @@ services:
       - "123:123/udp"
       - "323:323/udp"
     volumes:
-      - gpsd_socket:/run/:rw
-      - ./chrony.conf:/etc/chrony/chrony.conf:ro
+      #- gpsd_socket:/run/:rw
+      - ./chrony/chrony.conf:/etc/chrony/chrony.conf:ro
     environment:
       - TZ=UTC
+      - LOG_LEVEL=0   # 0 = information, higher gets lower
       #ipc: service:gpsd
     cap_add:
       - SYS_TIME
@@ -44,11 +45,6 @@ services:
     #depends_on:
     #  gpsd:
     #    condition: service_healthy
-    healthcheck:
-      test: ["CMD", "chronyc", "tracking"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
   exporter:
     build:
