@@ -47,10 +47,13 @@ start_gpsd() {
     # Build gpsd command
     local gpsd_cmd=(
 	gpsd
-        -G              # Listen on all addresses
-        -N              # stay in the foreground
-        -n              # Don't wait for client to connect
-        -D"$DEBUG_LEVEL" # Debug level
+        -G                  # Listen on all addresses
+        -N                  # Stay in the foreground
+        -n                  # Don't wait for client to connect
+        -D"$DEBUG_LEVEL"    # Debug level
+        -S 2947             # Port
+        -s "$GPS_SPEED"     # Fixed port speed
+        -F "$GPSD_SOCKET"   # Control socket
         "$GPS_DEVICE"
     )
     
