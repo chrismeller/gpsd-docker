@@ -1,3 +1,15 @@
+# v0.0.14 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Update ghcr.io/chrismeller/gpsd-docker/chrony:latest Docker digest to d152307 [#20](https://github.com/chrismeller/gpsd-docker/pull/20) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.13 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
