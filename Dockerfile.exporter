@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS builder
+FROM debian:stable-slim@sha256:7cb087f19bcc175b96fbe4c2aef42ed00733a659581a80f6ebccfd8fe3185a3d AS builder
 
 EXPOSE 9978
 
@@ -14,7 +14,7 @@ RUN git clone https://github.com/natesales/gpsd-exporter.git /src \
     && cd /src \
     && go build -o gpsd-exporter .
 
-FROM debian:stable-slim
+FROM debian:stable-slim@sha256:7cb087f19bcc175b96fbe4c2aef42ed00733a659581a80f6ebccfd8fe3185a3d
 
 # Copy the built binary
 COPY --from=builder /src/gpsd-exporter /usr/bin/gpsd-exporter
