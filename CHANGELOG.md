@@ -1,3 +1,15 @@
+# v0.0.12 (Sat Nov 29 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Enable vulnerability alerts in renovate.json ([@chrismeller](https://github.com/chrismeller))
+
+#### Authors: 1
+
+- Chris Meller ([@chrismeller](https://github.com/chrismeller))
+
+---
+
 # v0.0.11 (Sat Nov 29 2025)
 
 #### ⚠️ Pushed to `main`
