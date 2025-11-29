@@ -1,3 +1,15 @@
+# v0.0.4 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Change docker workflow to only publish on git tags [#12](https://github.com/chrismeller/gpsd-docker/pull/12) ([@Copilot](https://github.com/Copilot))
+
+#### Authors: 1
+
+- [@Copilot](https://github.com/Copilot)
+
+---
+
 # v0.0.3 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
