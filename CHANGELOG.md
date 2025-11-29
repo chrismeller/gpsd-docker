@@ -1,3 +1,15 @@
+# v0.0.11 (Sat Nov 29 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Update Renovate configuration with best practices ([@chrismeller](https://github.com/chrismeller))
+
+#### Authors: 1
+
+- Chris Meller ([@chrismeller](https://github.com/chrismeller))
+
+---
+
 # v0.0.10 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
