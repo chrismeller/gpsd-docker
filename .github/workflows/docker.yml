@@ -51,6 +51,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/${{ matrix.image }}
+          # Docker image tags:
+          # - Branch name (e.g., main)
+          # - PR number (e.g., pr-123)
+          # - Git SHA (e.g., sha-abc1234)
+          # - Semantic version from git tag (e.g., v1.2.3 -> 1.2.3, 1.2, 1)
+          # - 'latest' tag on default branch
           tags: |
             type=ref,event=branch
             type=ref,event=pr
