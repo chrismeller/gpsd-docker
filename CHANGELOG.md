@@ -1,3 +1,15 @@
+# v0.0.5 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Fix docker workflow trigger to use release events instead of tag pushes [#13](https://github.com/chrismeller/gpsd-docker/pull/13) ([@Copilot](https://github.com/Copilot))
+
+#### Authors: 1
+
+- [@Copilot](https://github.com/Copilot)
+
+---
+
 # v0.0.4 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
