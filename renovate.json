@@ -7,5 +7,12 @@
     ":automergeMinor",
     "preview:dockerVersions",
     ":pinAllExceptPeerDependencies"
-  ]
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+  "major": {
+    "dependencyDashboardApproval": true
+  }
 }
