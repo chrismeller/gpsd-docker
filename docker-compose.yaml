@@ -1,8 +1,6 @@
 services:
   gpsd:
-    build:
-      context: .
-      dockerfile: Dockerfile.gpsd
+    image: ghcr.io/chrismeller/gpsd-docker/gpsd:latest
     container_name: gpsd
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
@@ -24,9 +22,7 @@ services:
     #     condition: service_healthy
 
   chrony:
-    build:
-      context: .
-      dockerfile: Dockerfile.chrony
+    image: ghcr.io/chrismeller/gpsd-docker/chrony:latest
     container_name: chrony
     ports:
       - "123:123/udp"
@@ -47,9 +43,7 @@ services:
        condition: service_healthy
 
   exporter:
-    build:
-      context: .
-      dockerfile: Dockerfile.exporter
+    image: ghcr.io/chrismeller/gpsd-docker/exporter:latest
     container_name: exporter
     ports:
       - "9978:9978/tcp"
