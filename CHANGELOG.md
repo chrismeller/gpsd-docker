@@ -1,3 +1,15 @@
+# v0.0.13 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Pin dependencies [#19](https://github.com/chrismeller/gpsd-docker/pull/19) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.12 (Sat Nov 29 2025)
 
 #### ⚠️ Pushed to `main`
