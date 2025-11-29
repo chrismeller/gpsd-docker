@@ -1,6 +1,6 @@
 services:
   gpsd:
-    image: ghcr.io/chrismeller/gpsd-docker/gpsd:latest
+    image: ghcr.io/chrismeller/gpsd-docker/gpsd:latest@sha256:9bd60933661cc2ea3b897fb8135f58104a0d7ba419f57c2682f9b597a127d4be
     container_name: gpsd
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
@@ -22,7 +22,7 @@ services:
     #     condition: service_healthy
 
   chrony:
-    image: ghcr.io/chrismeller/gpsd-docker/chrony:latest
+    image: ghcr.io/chrismeller/gpsd-docker/chrony:latest@sha256:34927fb34f75b66b0bf619c8e5b9727e1895ad4ec4dc9db8592a876152bc38ca
     container_name: chrony
     ports:
       - "123:123/udp"
@@ -43,7 +43,7 @@ services:
        condition: service_healthy
 
   exporter:
-    image: ghcr.io/chrismeller/gpsd-docker/exporter:latest
+    image: ghcr.io/chrismeller/gpsd-docker/exporter:latest@sha256:29a555da0ae1807150d0c1d340751d64465a25611d7c63add504f5184cc059cc
     container_name: exporter
     ports:
       - "9978:9978/tcp"
