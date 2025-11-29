@@ -8,16 +8,23 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  packages: write
 
 jobs:
   release:
     runs-on: ubuntu-latest
+    outputs:
+      new_tag: ${{ steps.get-tag.outputs.tag }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      - name: Get latest tag before release
+        id: before-tag
+        run: echo "tag=$(git describe --tags --abbrev=0 2>/dev/null || echo '')" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -35,3 +42,26 @@ jobs:
           # Run auto shipit to create new release based on PR labels
           # This will create a new git tag and GitHub release if appropriate
           auto shipit
+
+      - name: Get new tag after release
+        id: get-tag
+        run: |
+          git fetch --tags
+          NEW_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo '')
+          BEFORE_TAG="${{ steps.before-tag.outputs.tag }}"
+          if [ "$NEW_TAG" != "$BEFORE_TAG" ] && [ -n "$NEW_TAG" ]; then
+            echo "tag=$NEW_TAG" >> $GITHUB_OUTPUT
+            echo "New release tag: $NEW_TAG"
+          else
+            echo "No new tag created"
+          fi
+
+  docker:
+    needs: release
+    if: needs.release.outputs.new_tag != ''
+    uses: ./.github/workflows/docker.yml
+    with:
+      tag: ${{ needs.release.outputs.new_tag }}
+    permissions:
+      contents: read
+      packages: write
