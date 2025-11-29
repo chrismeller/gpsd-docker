@@ -1,3 +1,15 @@
+# v0.0.9 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Fix docker image push by checking inputs.tag instead of github.event_name [#18](https://github.com/chrismeller/gpsd-docker/pull/18) ([@Copilot](https://github.com/Copilot))
+
+#### Authors: 1
+
+- [@Copilot](https://github.com/Copilot)
+
+---
+
 # v0.0.8 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
