@@ -2,6 +2,8 @@
   "plugins": ["git-tag", "released"],
   "owner": "chrismeller",
   "repo": "gpsd-docker",
+  "name": "Chris Meller",
+  "email": "chris@doesnthaveone.com",
   "labels": [
     {
       "name": "major",
