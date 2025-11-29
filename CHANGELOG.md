@@ -1,3 +1,15 @@
+# v0.0.3 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Update actions/setup-node action to v6 [#10](https://github.com/chrismeller/gpsd-docker/pull/10) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.2 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
