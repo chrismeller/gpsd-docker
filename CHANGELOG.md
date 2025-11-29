@@ -1,3 +1,15 @@
+# v0.0.7 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Fix docker workflow trigger on release/tag creation [#15](https://github.com/chrismeller/gpsd-docker/pull/15) ([@Copilot](https://github.com/Copilot))
+
+#### Authors: 1
+
+- [@Copilot](https://github.com/Copilot)
+
+---
+
 # v0.0.6 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
