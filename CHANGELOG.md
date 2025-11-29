@@ -1,3 +1,15 @@
+# v0.0.8 (Sat Nov 29 2025)
+
+#### 🐛 Bug Fix
+
+- Fix docker workflow trigger using workflow_call chaining [#17](https://github.com/chrismeller/gpsd-docker/pull/17) ([@Copilot](https://github.com/Copilot))
+
+#### Authors: 1
+
+- [@Copilot](https://github.com/Copilot)
+
+---
+
 # v0.0.7 (Sat Nov 29 2025)
 
 #### 🐛 Bug Fix
