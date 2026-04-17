@@ -1,3 +1,15 @@
+# v0.0.20 (Fri Apr 17 2026)
+
+#### 🐛 Bug Fix
+
+- Update dependency node to v24.15.0 [#36](https://github.com/chrismeller/gpsd-docker/pull/36) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.19 (Wed Mar 25 2026)
 
 #### 🐛 Bug Fix
