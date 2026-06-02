@@ -1,3 +1,15 @@
+# v0.0.23 (Tue Jun 02 2026)
+
+#### 🐛 Bug Fix
+
+- Pin dependencies [#39](https://github.com/chrismeller/gpsd-docker/pull/39) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.22 (Fri May 22 2026)
 
 #### 🐛 Bug Fix
