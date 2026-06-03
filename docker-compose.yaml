@@ -1,6 +1,6 @@
 services:
   gpsd:
-    image: ghcr.io/chrismeller/gpsd-docker/gpsd:latest@sha256:9bd60933661cc2ea3b897fb8135f58104a0d7ba419f57c2682f9b597a127d4be
+    image: ghcr.io/chrismeller/gpsd-docker/gpsd:latest@sha256:ab4153d3239beab38567a0ce88afa8c8ba18258c0f65740924173f1a49e5a03a
     container_name: gpsd
     devices:
       - /dev/ttyACM0:/dev/ttyACM0
