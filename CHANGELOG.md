@@ -1,3 +1,15 @@
+# v0.0.27 (Tue Jul 21 2026)
+
+#### 🐛 Bug Fix
+
+- Update actions/checkout action to v6.1.0 [#43](https://github.com/chrismeller/gpsd-docker/pull/43) ([@renovate[bot]](https://github.com/renovate[bot]))
+
+#### Authors: 1
+
+- [@renovate[bot]](https://github.com/renovate[bot])
+
+---
+
 # v0.0.26 (Tue Jul 14 2026)
 
 #### 🐛 Bug Fix
