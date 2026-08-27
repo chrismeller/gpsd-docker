@@ -22,7 +22,7 @@ services:
     #     condition: service_healthy
 
   chrony:
-    image: ghcr.io/chrismeller/gpsd-docker/chrony:latest@sha256:d1523079d84bc9959da0c5c02bee46dc0d9d132fa42341f2269a6c743015db96
+    image: ghcr.io/chrismeller/gpsd-docker/chrony:latest@sha256:25cf536f146d8068da9a9348e2f10228ac4c65b8d29e2a45aa45e23b013e3f68
     container_name: chrony
     ports:
       - "123:123/udp"
