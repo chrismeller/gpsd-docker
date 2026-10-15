@@ -43,7 +43,7 @@ services:
        condition: service_healthy
 
   exporter:
-    image: ghcr.io/chrismeller/gpsd-docker/exporter:latest@sha256:29a555da0ae1807150d0c1d340751d64465a25611d7c63add504f5184cc059cc
+    image: ghcr.io/chrismeller/gpsd-docker/exporter:latest@sha256:512226237e42bca57fea6f65fcb1da8d7a8aed942effdc40b11c4bce25692d42
     container_name: exporter
     ports:
       - "9978:9978/tcp"
